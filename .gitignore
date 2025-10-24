@@ -1,0 +1,47 @@
+# Arquivo .gitignore para projetos com ESP32 (PlatformIO) e Node-RED
+
+# 1. Arquivos de Build e Configuração do PlatformIO
+# Ignora a pasta de ambientes de build
+.pio/
+# Ignora a pasta de bibliotecas gerenciadas (instaladas pelo pio)
+.vscode/
+# Arquivos de configuração específicos do usuário
+platformio.ini.user
+
+# 2. Dados de Compilação e Binários
+# Binários e artefatos de compilação
+*.elf
+*.bin
+# Arquivos de mapa de memória
+*.map
+
+# 3. Arquivos de Sistema de Arquivos (LittleFS / SPIFFS)
+# Ignora a pasta 'data' usada pelo PlatformIO para upload de sistema de arquivos,
+# pois geralmente só contém dados persistentes ou temporários.
+data/
+
+# 4. Logs e Dados Temporários
+# Logs gerais (se gerados)
+*.log
+# Arquivos de dados temporários
+*.tmp
+
+# 5. Node-RED / NPM
+# Arquivos que armazenam o estado do Node-RED, credenciais e configurações locais.
+settings.js
+settings.json
+flows_cred.json
+# Arquivo de configuração de ambiente NPM (ignorar)
+.npmrc
+# Bloqueio de versões exatas de dependências (ignorar para focar no projeto embarcado)
+package-lock.json
+# Pasta que pode conter dados persistentes ou logs do Node-RED
+.node-red-logs/
+
+# 6. Wokwi
+# Ignora a pasta de arquivos temporários do Wokwi
+.wokwi-cli/
+
+# 7. Arquivos de Sistema Operacional
+.DS_Store
+Thumbs.db

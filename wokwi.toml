@@ -1,0 +1,90 @@
+# ============================================================
+# Arquivo de Configuração Wokwi - Sistema Monitoramento Cardíaco
+# ============================================================
+# Este arquivo configura o simulador Wokwi para o projeto ESP32
+# com LittleFS, DHT22, LEDs e botão de simulação cardíaca
+# ============================================================
+
+[wokwi]
+# Versão do formato de configuração
+version = 1
+
+# Firmware a ser carregado no ESP32
+# O Wokwi irá buscar o arquivo compilado do PlatformIO
+firmware = '.pio/build/esp32dev/firmware.bin'
+
+# Arquivo ELF para debugging (símbolos de depuração)
+elf = '.pio/build/esp32dev/firmware.elf'
+
+# ============================================================
+# CONFIGURAÇÃO DO SISTEMA DE ARQUIVOS - LITTLEFS
+# ============================================================
+# Esta seção configura a partição LittleFS no simulador
+# Necessário para simular o armazenamento persistente de dados
+
+[[wokwi.flash]]
+# Nome da partição (deve corresponder ao partitions.csv)
+name = "littlefs"
+
+# Tipo de partição: data (para dados persistentes)
+type = "data"
+
+# Subtipo: spiffs (sim, mesmo para LittleFS - é o identificador ESP32)
+subtype = "spiffs"
+
+# Offset na Flash: 0x3D0000 (conforme partitions.csv)
+offset = 0x3D0000
+
+# Tamanho da partição: 192KB (0x30000 bytes)
+# Suficiente para armazenar centenas de amostras de sensores
+size = 0x30000
+
+# Arquivo de imagem do filesystem (opcional)
+# Se não especificado, começa vazio
+# image = "littlefs.bin"
+
+# ============================================================
+# CONFIGURAÇÕES ADICIONAIS
+# ============================================================
+
+# Habilitar Serial Monitor
+[wokwi.serial]
+# Porta serial para comunicação
+port = 0
+# Baud rate (deve corresponder ao código: 115200)
+baud = 115200
+
+# ============================================================
+# NOTAS IMPORTANTES
+# ============================================================
+# 
+# 1. COMPILAÇÃO:
+#    Execute: pio run
+#    Isso gera o firmware.bin e firmware.elf
+#
+# 2. PARTIÇÕES:
+#    O offset 0x290000 é padrão para:
+#    - Bootloader: 0x1000
+#    - Partições: 0x8000
+#    - App0: 0x10000 (tamanho ~2.6MB)
+#    - LittleFS: 0x290000 (tamanho ~1.5MB)
+#
+# 3. SIMULAÇÃO:
+#    O Wokwi simulará o LittleFS permitindo:
+#    - Leitura/escrita de arquivos
+#    - Persistência entre sessões
+#    - Operações de sistema de arquivos
+#
+# 4. DEBUGGING:
+#    O arquivo .elf permite debugging com símbolos
+#    Use o Serial Monitor para ver os logs
+#
+# 5. ESTRUTURA DE ARQUIVOS:
+#    /sensor_data.json - Dados dos sensores offline
+#
+# 6. LIMITAÇÕES DO WOKWI:
+#    - WiFi é simulado (sempre conecta)
+#    - MQTT precisa de internet real
+#    - LittleFS funciona em RAM (não persiste ao fechar)
+#
+# ============================================================
