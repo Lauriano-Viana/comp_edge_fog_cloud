@@ -159,7 +159,8 @@ Execute o projeto completo diretamente no navegador sem necessidade de hardware 
 ### 1️⃣ Clonar Repositório
 
 ```bash
-git clone https://github.com/seu-usuario/cardiac-monitoring-esp32.git
+git clone https://github.com/Lauriano-Viana/comp_edge_fog_cloud.git
+
 cd cardiac-monitoring-esp32
 ```
 
