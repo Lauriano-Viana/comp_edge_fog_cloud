@@ -161,7 +161,7 @@ Execute o projeto completo diretamente no navegador sem necessidade de hardware 
 ```bash
 git clone https://github.com/Lauriano-Viana/comp_edge_fog_cloud.git
 
-cd cardiac-monitoring-esp32
+cd comp_edge_fog_cloud
 ```
 
 ### 2️⃣ Compilar e Upload (ESP32 Físico)
