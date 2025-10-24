@@ -292,8 +292,6 @@ if (heartRate > 100 bpm)  → ⚠️ ATENÇÃO
 cardiac-monitoring-esp32/
 ├── src/
 │   └── main.cpp              # Código principal ESP32
-├── include/
-├── lib/
 ├── platformio.ini            # Configuração PlatformIO
 ├── wokwi.toml                # Configuração simulador
 ├── partitions.csv            # Partições Flash (LittleFS)
